@@ -1,45 +1,63 @@
 <script setup>
-import LionImage from '@/Assets/LionImage.vue';
-import GiraffeImage from '@/Assets/GiraffeImage.vue';
-import ZooKeeperImage from '@/Assets/ZooKeeperImage.vue';
-import RhinosImage from '@/Assets/RhinosImage.vue';
+import {ref} from 'vue';
 import SiteMap from './SiteMap.vue';
 import HotelImage from '@/Assets/HotelImage.vue';
+import InfoPages from '@/Components/InfoPages.vue';
+
+const model = defineModel();
+
+const imageLibrary = ["https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85",
+'https://wallpapers.com/images/hd/zoo-animals-pictures-p2xol45muslpeops.jpg']
+
+let i = ref(0);
+
+function changeImg(operation) {
+  if (operation === 'plus') {
+    if (i.value === imageLibrary.length-1) {
+      i.value = 0
+    }
+    else{
+      i.value++;
+    }
+  } 
+  else{
+    if (i.value === 0) {
+      i.value = imageLibrary.length-1
+    }
+    else{
+      i.value--;
+    }
+  }
+}
 </script>
 
 <template>
-    <div class="h-full w-full flex justify-center items-center p-10 flex-col">
-      
-      <div class="grid grid-cols-4 gap-8">
-        <div class="p-3 flex flex-col justify-start items-center w-78 text-ellipsis text-white shadow-md bg-[#A89C87] cursor-pointer"> 
-          <h1 class="text-2xl mb-3">About Our Animals</h1>
-          <LionImage class="w-78 h-64 mb-3 rounded-md"/>
-          <p>Step into a world of incredible creatures from every corner of the globe. At RZA, we’re home to more than 200 species. Each animal in our care helps tell the
-             story of life on Earth.</p>
-        </div>
-        <div class="p-3 flex flex-col justify-start items-center w-78 text-ellipsis text-white shadow-md bg-[#A89C87] cursor-pointer"> 
-          <h1 class="text-2xl mb-3">Plan Your Visit</h1>
-          <GiraffeImage class="w-78 h-64 mb-3 rounded-md"/>
-          <p>Get ready for a wild adventure at our zoo! Discover everything you need to make the most of your day - from opening hours
-             and ticket prices to maps, dining options, and daily animal encounters.</p>
-        </div>
+    <div class="w-full flex justify-center items-center p-10 flex-col">
+      <div class="flex flex-row items-center justify-center">
+        <button class="w-15 h-15 rounded-full bg-[#A89C87] flex items-center
+          cursor-pointer justify-center mr-3" @click="changeImg('minus')">
+            <b class="text-xl text-white"><</b>
+        </button>
 
-        <div class="p-3 flex flex-col justify-start items-center w-78 text-ellipsis text-white shadow-md bg-[#A89C87] cursor-pointer"> 
-          <h1 class="text-2xl mb-3">Meet the Keepers</h1>
-          <ZooKeeperImage class="w-78 h-64 mb-3 rounded-md"/>
-          <p>Our dedicated zookeepers are the heart of the zoo, caring for every animal with passion and expertise. They work tirelessly to ensure each creature’s health, safety, and happiness 
-            - while also sharing their knowledge to inspire visitors about wildlife conservation</p>
-        </div>
+            <img :src="imageLibrary[i]" 
+            class="w-280 max-w-4xl h-[50vh] object-cover rounded-md"
+          />
 
-        <div class="p-3 flex flex-col justify-start items-center w-78 text-ellipsis text-white shadow-md bg-[#A89C87] cursor-pointer"> 
-          <h1 class="text-2xl mb-3">Upcoming Events</h1>
-          <RhinosImage class="w-78 h-64 mb-3 rounded-md"/>
-          <p>There’s always something exciting happening at RZA Zoo! 
-            Check out what’s coming up and plan your next adventure with us - there’s something for every animal lover!</p>
-        </div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 
+            -translate-y-1/2 bg-green-500 bg-opacity-50 p-4 rounded-md cursor-pointer" @click="model='Booking'">
+              <p class="text-white text-xl font-bold">Book Now!</p>
+            </div>
+
+          <button class="w-15 h-15 rounded-full bg-[#A89C87] flex
+          cursor-pointer items-center justify-center ml-3" @click="changeImg('plus')">
+            <b class="text-xl text-white" >></b>
+        </button>
       </div>
-
-
-      <SiteMap />
+      <InfoPages  class="p-3 mt-8"/>
+      <SiteMap class="w-6xl" />
+      <div class="flex justify-center items-center flex-col bg-[#A89C87] p-3 px-8"> 
+        <h1 class="text-5xl text-white p-3">RZA's Hotel</h1>
+        <HotelImage class="w-4xl h-3xl rounded-md"/>
+      </div> 
     </div>
 </template>
