@@ -1,0 +1,6 @@
+@RZA_Solution_HostAddress = http://localhost:5085
+
+GET {{RZA_Solution_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
