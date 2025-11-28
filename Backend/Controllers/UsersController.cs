@@ -22,7 +22,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddBooking([FromBody] User user)
+    public async Task<IActionResult> AddUser([FromBody] User user)
     {
         _context.User.Add(user);
         await _context.SaveChangesAsync();
