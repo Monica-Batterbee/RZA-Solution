@@ -4,6 +4,9 @@ import Ticket from './Ticket.vue';
 const tickets = defineModel('tickets');
 const totalPrice = defineModel('totalPrice');
 const ticketsSelected = defineModel('ticketsSelected');
+console.log("Tickets",ticketsSelected.value)
+const bookingComp = defineModel('bookingComp')
+
 </script>
 
 <template>
@@ -28,7 +31,7 @@ const ticketsSelected = defineModel('ticketsSelected');
     </div>
     
     <button v-if="totalPrice !== 0"
-     class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer" @click="ticketsSelected=true">Proceed to checkout</button>
+     class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer" @click="bookingComp='Basket'">Proceed to checkout</button>
 
   </div>
 </template>

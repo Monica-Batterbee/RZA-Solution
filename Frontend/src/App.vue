@@ -6,7 +6,20 @@ import Booking from './Views/Booking.vue';
 import SignUp from './Views/SignUp.vue';
 
 
+let loggedIn = ref(false);
 let activeComp = ref("Home");
+let foundUser = ref({})
+let nextPage = ref('Home')
+const bookingComp = ref('Calendar')
+const selectedDates = ref([])
+
+const tickets = ref({
+  Adult: { price: 20, age: '18+', quantity: 0 },
+  Child: { price: 15, age: '5 - 18', quantity: 0 },
+  Toddler: { price: 10, age: 'Under 5', quantity: 0 },
+  Senior: { price: 15, age: '65+', quantity: 0 }
+})
+
 </script>
 
 <template>
@@ -18,23 +31,36 @@ let activeComp = ref("Home");
       </div>
       <nav class="text-white text-lg">
         <a class="mx-2 cursor-pointer  hover:text-green-300" @click="activeComp='Booking'">Book Now</a>
-        <a class="mx-2 cursor-pointer  hover:text-green-300" @click="activeComp='SignUp'">Log in</a>
+        <a v-if="!loggedIn" class="mx-2 cursor-pointer  hover:text-green-300" @click="activeComp='SignUp'" >Log in</a>
+        <a v-else class="mx-2 cursor-pointer  hover:text-green-300" @click="foundUser={}, loggedIn=false">Log out</a>
         <a class="mx-2 cursor-pointer  hover:text-green-300">Educational visits</a>
         <a class="mx-2 cursor-pointer  hover:text-green-300">Contact us</a>
       </nav>
     </header>
 
-      <SignUp v-if="activeComp==='SignUp'"/>
+      <SignUp v-if="activeComp==='SignUp'"
+      v-model:loggedIn="loggedIn"
+      v-model:activeComp="activeComp"
+      v-model:foundUser="foundUser"
+      v-model:nextPage="nextPage"
+      v-model:bookingComp="bookingComp"
+      />
 
      <HomePage v-if="activeComp==='Home'"
       v-model="activeComp" />
 
       <Booking v-if="activeComp==='Booking'" 
-      v-model="activeComp"/> 
+      v-model:activeComp="activeComp"
+      v-model:loggedIn="loggedIn"
+      v-model:foundUser="foundUser"
+      v-model:nextPage="nextPage"
+      v-model:bookingComp="bookingComp"
+      v-model:tickets="tickets"
+      v-model:selectedDates="selectedDates"/> 
+
 
   </div>
 
 
 </template>
 
-<style scoped></style>

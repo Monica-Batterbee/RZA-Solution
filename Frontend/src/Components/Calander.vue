@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const selectedDates = defineModel('selectedDates');
-const proceed = defineModel('proceed');
+const bookingComp = defineModel('bookingComp')
 
 // Today (used for disabling past dates)
 const today = new Date()
@@ -161,7 +161,7 @@ function isSelected(day) {
       <div class="w-full flex justify-center">
         <button 
           class="px-5 py-2 bg-green-500 text-white mt-4 cursor-pointer rounded-md hover:bg-green-600"
-          @click="proceed=true">
+          @click="bookingComp='Tickets'">
           Proceed
         </button>
       </div>

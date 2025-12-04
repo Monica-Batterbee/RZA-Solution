@@ -7,6 +7,12 @@ const confirmation = ref("")
 const fName = ref('')
 const LName = ref('')
 
+const loggedIn = defineModel('loggedIn');
+const activeComp = defineModel('activeComp');
+const foundUser = defineModel('foundUser')
+const nextPage = defineModel('nextPage')
+const bookingComp = defineModel('bookingComp')
+console.log('page',bookingComp.value)
 import axios from "axios";
 
 async function authenticate() {
@@ -21,10 +27,13 @@ async function authenticate() {
 
             await axios.post('http://localhost:5085/api/users', newUser)
             .then(function (response) {
-                console.log(response);
+                console.log(nextPage.value)
+                loggedIn.value = true;
+                activeComp.value = nextPage.value
             })
             .catch(function (error) {
                 console.log(error);
+                
             });
         }
     }
@@ -35,13 +44,19 @@ async function authenticate() {
 
         console.log(userData);
 
-        // const foundUser = userData.find(
-        //     (u) => u.email === email.value && u.password === password.value
-        // );
+        const user = userData.find(
+            (u) => u.email === email.value && u.password === password.value
+        );
 
-        // if(foundUser) {
-
-        // }
+        console.log(user)
+        if(user) {
+            foundUser.value = user
+            loggedIn.value = true;
+            activeComp.value = nextPage.value
+        }
+        else {
+            console.log("Not found")
+        }
     }
 }
 
