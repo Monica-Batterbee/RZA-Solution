@@ -33,15 +33,16 @@ function changeImg(operation) {
 
 <template>
     <div class="w-full flex justify-center items-center p-10 flex-col">
-      <div class="flex flex-row items-center justify-center">
+      <div class="flex flex-row items-center justify-center w-full">
         <button class="w-15 h-15 rounded-full bg-[#A89C87] flex items-center
           cursor-pointer justify-center mr-3" @click="changeImg('minus')">
             <b class="text-xl text-white"><</b>
         </button>
 
-            <img :src="imageLibrary[i]" 
-            class="w-280 max-w-4xl h-[50vh] object-cover rounded-md"
-          />
+        <img 
+          :src="imageLibrary[i]" 
+          class= "h-[50vh] w-60 object-cover rounded-md sm:w-120 md:w-130 lg:w-210 xl:w-280 2xl:w-280"
+        />
 
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 
             -translate-y-1/2 bg-green-500 bg-opacity-50 p-4 rounded-md cursor-pointer" @click="model='Booking'">
@@ -53,7 +54,8 @@ function changeImg(operation) {
             <b class="text-xl text-white" >></b>
         </button>
       </div>
-      <InfoPages  class="p-3 mt-8"/>
+      <InfoPages  class="p-3 mt-8"
+      v-model:activeComp="model"/>
       <SiteMap class="w-6xl" />
       <div class="flex justify-center items-center flex-col bg-[#A89C87] p-3 px-8"> 
         <h1 class="text-5xl text-white p-3">RZA's Hotel</h1>
