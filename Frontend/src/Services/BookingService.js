@@ -24,3 +24,13 @@ export const postBooking = async (newBooking) => {
       });
 
 };
+
+export const deleteBooking = async (bookingID) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${bookingID}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting booking:", error);
+    throw error;
+  }
+};

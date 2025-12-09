@@ -8,6 +8,7 @@ import AboutOurAnimals from './Views/AboutOurAnimals.vue';
 import PlanVisit from './Views/PlanVisit.vue';
 import MeetTheKeepers from './Views/MeetTheKeepers.vue';
 import UpcomingEvents from './Views/UpcomingEvents.vue';
+import ManageBookings from './Views/ManageBookings.vue';
 
 let loggedIn = ref(false);
 let activeComp = ref("Home");
@@ -36,16 +37,14 @@ const mobileOpen = ref(false);
   <header
   v-if="activeComp !== 'SignUp'"
   class="shadow-md bg-[#A89C87] w-full p-1 flex flex-row justify-between items-center">
-  <!-- Logo + Title -->
   <div class="flex items-center">
     <logo class="w-18 h-18 mr-4 rounded-xl" />
     <h1 class="text-xl text-white">Riget Zoo Adventures</h1>
   </div>
 
-  <!-- Desktop Nav -->
   <nav
-    class="hidden md:flex text-white text-lg items-center"
-  >
+    class="hidden md:flex text-white text-lg items-center">
+    <a class="mx-2 cursor-pointer hover:text-green-300" v-if="loggedIn" @click="activeComp='ManageBookings'">Manage Bookings</a>
     <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Booking'">Book Now</a>
     <a
       v-if="!loggedIn"
@@ -126,6 +125,8 @@ const mobileOpen = ref(false);
       v-model:tickets="tickets"
       v-model:selectedDates="selectedDates"/> 
 
+      <ManageBookings v-if="activeComp==='ManageBookings'"
+      v-model:foundUser="foundUser"/>
 
   </div>
 
