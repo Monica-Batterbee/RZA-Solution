@@ -28,4 +28,19 @@ public class BookingsController : ControllerBase
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetBookings), new { id = booking.BookingID }, booking);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteBooking(int id)
+    {
+        var booking = await _context.Booking.FindAsync(id);
+
+        if (booking == null)
+            return NotFound();
+
+        _context.Booking.Remove(booking);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
+

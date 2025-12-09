@@ -24,7 +24,7 @@ watch(localQuantity, (newVal) => {
 </script>
 
 <template>
-  <div class="border border-gray-300 p-3 rounded-md cursor-pointer flex flex-col gap-3 mb-4">
+  <div class="border border-gray-300 p-3 rounded-md  flex flex-col gap-3 mb-4">
     <h1 class="text-2xl">{{ name }} Ticket</h1>
 
     <div class="flex flex-row justify-between">
