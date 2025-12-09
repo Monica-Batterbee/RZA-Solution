@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RZA-Solution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80887e930221bb6cac594810f600985b8e66233d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0b34772e43bc848357902466df0dc463548a907")]
 [assembly: System.Reflection.AssemblyProductAttribute("RZA-Solution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RZA-Solution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

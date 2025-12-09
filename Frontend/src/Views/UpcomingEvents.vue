@@ -64,13 +64,21 @@ const upcomingEvents = {
     <Modal v-if="openModal" 
     v-model:checkout="checkout"
     v-model:openModal="openModal"/>
-    <h1 class="text-white text-4xl p-3 text-center mt-3 mb-3">Upcoming Events</h1>
+
+  
+    <div class="w-full flex flex-row justify-start items-center p-3">
+      <button class="text-left text-white p-3 bg-[#A89C87] rounded-md cursor-pointer self-start"
+      @click="activeComp='Home'">Go Back to Home</button>
+      <div class="grow justify-center">
+        <h1 class="text-white text-4xl text-center ">Upcoming Events</h1>
+      </div>
+    </div>
     <div v-for="event in Object.values(upcomingEvents)" class="flex flex-row w-full justify-start my-4 bg-[#A89C87]">
         <img :src="event.image" class="w-1/2 object-cove"/>
         <div class="w-1/2 flex p-3 flex-col text-white justify-between text-xl">
             <div>
             <div class="bg-white w-full rounded-md flex items-center justify-center mb-4 p-3 ">
-            <h1 class="sm:text-xl md:text-2xl lg:text-3xl  text-black underline">{{ event.title }}</h1>
+            <h1 class="sm:text-xl md:text-2xl lg:text-3xl  text-black">{{ event.title }}</h1>
             </div>
             <p class="mt-3 mb-5 ">{{ event.description }}</p>
 

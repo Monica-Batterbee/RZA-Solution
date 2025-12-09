@@ -47,9 +47,14 @@ import UpcomingEvents from './UpcomingEvents.vue';
 
 <template>
     <div class="flex items-center justify-center text-white p-4 flex-col">
-        <h1 class="text-4xl mb-4">Plan your visit!</h1>
-        
-        <div class="bg-white p-3 rounded-md text-black">
+
+        <div class="w-full flex flex-row justify-start">
+            <button class="text-left text-white p-3 bg-[#A89C87] rounded-md cursor-pointer self-start"
+            @click="activeComp='Home'">Go Back to Home</button>
+            <div class="flex grow justify-center items-center">
+                <div>
+                <h1 class="text-4xl mb-4">Plan your visit!</h1>
+                <div class="bg-white p-3 rounded-md text-black">
             <div class="flex flex-row justify-between items-center">
                 <h2 class="text-2xl">Our Daily Schedule</h2>
                 <a class="font-bold text-[#A89C87] cursor-pointer" @click="activeComp='UpcomingEvents'">View Our Upcoming Events</a>
@@ -69,5 +74,9 @@ import UpcomingEvents from './UpcomingEvents.vue';
                 </div>
             </div>
         </div>
+                </div> 
+            </div>
+        </div>
+        
     </div>
 </template>
