@@ -2,7 +2,7 @@
 import SignUp from '@/Views/SignUp.vue';
 import Ticket from './Ticket.vue';
 import {ref} from 'vue';
-import Modal from './Modal.vue';
+import BookingModal from './BookingModal.vue';
 import { postBooking } from '@/Services/BookingService';
 
 const tickets = defineModel('tickets');
@@ -24,7 +24,7 @@ function changePage() {
     if (loggedIn.value) {
         const now = new Date();
         console.log(now.toString())
-
+        
         const newBooking = {
             dateBookingMade :  now.toString(),
             bookingDetails: JSON.stringify({
@@ -44,7 +44,7 @@ function changePage() {
 
 </script>
 <template>
-    <Modal v-if="checkout" 
+    <BookingModal v-if="checkout" 
     v-model:checkout="checkout" 
     v-model:activeComp="activeComp"
     v-model:nextPage="nextPage"

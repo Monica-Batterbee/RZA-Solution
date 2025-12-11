@@ -14,6 +14,7 @@ const nextPage = defineModel('nextPage')
 const activeComp = defineModel('activeComp')
 const selectedDates = defineModel('selectedDates')
 const ticketsSelected = ref(false)
+const nextComp = ref('Tickets')
 
 const totalPrice = computed(() =>
   Object.values(tickets.value)
@@ -29,7 +30,8 @@ const totalPrice = computed(() =>
 
     <Calander v-if="bookingComp==='Calendar'"
     v-model:selectedDates="selectedDates"
-    v-model:bookingComp="bookingComp"
+    v-model:nextPage="nextComp"
+    v-model="bookingComp"
     />
 
     <Tickets v-if="bookingComp==='Tickets'" 

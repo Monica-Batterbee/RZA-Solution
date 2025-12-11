@@ -9,13 +9,22 @@ import PlanVisit from './Views/PlanVisit.vue';
 import MeetTheKeepers from './Views/MeetTheKeepers.vue';
 import UpcomingEvents from './Views/UpcomingEvents.vue';
 import ManageBookings from './Views/ManageBookings.vue';
+import Hotel from './Views/Hotel.vue';
+import EducationalVisits from './Views/EducationalVisits.vue';
+
 
 let loggedIn = ref(false);
 let activeComp = ref("Home");
 let foundUser = ref({})
 let nextPage = ref('Home')
 const bookingComp = ref('Calendar')
+const ticketDates = ref([])
+const currentComp = ref('Rooms')
 const selectedDates = ref([])
+const nextComp = ref('Rooms')
+const selectedRooms = ref([])
+const cost = ref(0)
+
 
 const tickets = ref({
   Adult: { price: 20, age: '18+', quantity: 0 },
@@ -26,9 +35,6 @@ const tickets = ref({
 
 
 const mobileOpen = ref(false);
-
-
-
 
 </script>
 
@@ -44,6 +50,7 @@ const mobileOpen = ref(false);
 
   <nav
     class="hidden md:flex text-white text-lg items-center">
+    <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Hotel'">Our Hotel</a>
     <a class="mx-2 cursor-pointer hover:text-green-300" v-if="loggedIn" @click="activeComp='ManageBookings'">Manage Bookings</a>
     <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Booking'">Book Now</a>
     <a
@@ -57,11 +64,11 @@ const mobileOpen = ref(false);
       @click="foundUser = {}; loggedIn = false"
     >Log out</a>
 
-    <a class="mx-2 cursor-pointer hover:text-green-300">Educational visits</a>
+    <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp='EducationalVisits'">Educational visits</a>
     <a class="mx-2 cursor-pointer hover:text-green-300">Contact us</a>
   </nav>
 
-  <!-- Mobile Hamburger -->
+
   <button
     @click="mobileOpen = !mobileOpen"
     class="md:hidden text-white text-3xl focus:outline-none"
@@ -123,10 +130,23 @@ const mobileOpen = ref(false);
       v-model:nextPage="nextPage"
       v-model:bookingComp="bookingComp"
       v-model:tickets="tickets"
-      v-model:selectedDates="selectedDates"/> 
+      v-model:selectedDates="ticketDates"/> 
 
       <ManageBookings v-if="activeComp==='ManageBookings'"
       v-model:foundUser="foundUser"/>
+
+      <Hotel v-if="activeComp==='Hotel'"
+      v-model:currentComp="currentComp"
+      v-model:nextPage="nextPage"
+      v-model:loggedIn="loggedIn"
+      v-model:activeComp="activeComp"
+      v-model:foundUser="foundUser"
+      v-model:selectedDates="selectedDates"
+      v-model:nextComp="nextComp"
+      v-model:selectedRooms="selectedRooms"
+      v-model:cost="cost"/>
+
+      <EducationalVisits v-if="activeComp==='EducationalVisits'" />
 
   </div>
 

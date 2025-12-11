@@ -57,9 +57,6 @@ function changeImg(operation) {
       <InfoPages  class="p-3 mt-8"
       v-model:activeComp="model"/>
       <SiteMap class="w-6xl" />
-      <div class="flex justify-center items-center flex-col bg-[#A89C87] p-3 px-8"> 
-        <h1 class="text-5xl text-white p-3">RZA's Hotel</h1>
-        <HotelImage class="w-4xl h-3xl rounded-md"/>
-      </div> 
+
     </div>
 </template>

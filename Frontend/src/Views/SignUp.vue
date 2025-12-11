@@ -11,8 +11,9 @@ const loggedIn = defineModel('loggedIn');
 const activeComp = defineModel('activeComp');
 const foundUser = defineModel('foundUser')
 const nextPage = defineModel('nextPage')
-const bookingComp = defineModel('bookingComp')
-console.log('page',bookingComp.value)
+
+console.log('page',nextPage.value)
+
 import axios from "axios";
 
 async function authenticate() {
@@ -50,6 +51,7 @@ async function authenticate() {
 
         console.log(user)
         if(user) {
+            console.log(nextPage.value, 'nextPage')
             foundUser.value = user
             loggedIn.value = true;
             activeComp.value = nextPage.value
