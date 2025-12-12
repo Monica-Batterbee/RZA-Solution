@@ -11,6 +11,7 @@ import UpcomingEvents from './Views/UpcomingEvents.vue';
 import ManageBookings from './Views/ManageBookings.vue';
 import Hotel from './Views/Hotel.vue';
 import EducationalVisits from './Views/EducationalVisits.vue';
+import ContactUs from './Views/ContactUs.vue';
 
 
 let loggedIn = ref(false);
@@ -65,7 +66,7 @@ const mobileOpen = ref(false);
     >Log out</a>
 
     <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp='EducationalVisits'">Educational visits</a>
-    <a class="mx-2 cursor-pointer hover:text-green-300">Contact us</a>
+    <a class="mx-2 cursor-pointer hover:text-green-300"  @click="activeComp='ContactUs'">Contact us</a>
   </nav>
 
 
@@ -96,8 +97,8 @@ const mobileOpen = ref(false);
       @click="foundUser = {}; loggedIn = false; mobileOpen = false"
     >Log out</a>
 
-    <a class="cursor-pointer hover:text-green-300">Educational visits</a>
-    <a class="cursor-pointer hover:text-green-300">Contact us</a>
+    <a class="cursor-pointer hover:text-green-300" @click="activeComp='EducationalVisits'">Educational visits</a>
+    <a class="cursor-pointer hover:text-green-300" @click="activeComp='ContactUs'">Contact us</a>
   </div>
 
       <SignUp v-if="activeComp==='SignUp'"
@@ -147,6 +148,9 @@ const mobileOpen = ref(false);
       v-model:cost="cost"/>
 
       <EducationalVisits v-if="activeComp==='EducationalVisits'" />
+
+      <ContactUs v-if="activeComp==='ContactUs'" 
+      v-model="activeComp"/>
 
   </div>
 

@@ -66,7 +66,7 @@ async function authenticate() {
 
 <template>
 
-    <div class="w-screen h-screen bg-green-100 flex items-center justify-center">
+    <div class="w-screen h-screen  flex items-center justify-center">
        <div class="bg-white p-5 rounded-md shadow-md flex items-center justify-center flex-col w-1/3">
        <form class="flex flex-col w-full">
         <div class="flex items-center justify-center flex-col">

@@ -14,5 +14,6 @@ namespace Backend.Data
         public DbSet<Booking> Booking { get; set; }
         public DbSet<HotelRoom> HotelRoom {get; set; }
         public DbSet<HotelBooking> HotelBooking { get; set; }
+        public DbSet<ContactForm> ContactForm { get; set; }
     }
 }
