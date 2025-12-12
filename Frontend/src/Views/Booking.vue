@@ -29,7 +29,8 @@ const totalPrice = computed(() =>
 
     <Calander v-if="bookingComp==='Calendar'"
     v-model:selectedDates="selectedDates"
-    v-model:bookingComp="bookingComp"
+    v-model:nextPage="nextComp"
+    v-model="bookingComp"
     />
 
     <Tickets v-if="bookingComp==='Tickets'" 

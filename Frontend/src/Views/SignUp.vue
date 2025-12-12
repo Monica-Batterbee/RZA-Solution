@@ -11,8 +11,9 @@ const loggedIn = defineModel('loggedIn');
 const activeComp = defineModel('activeComp');
 const foundUser = defineModel('foundUser')
 const nextPage = defineModel('nextPage')
-const bookingComp = defineModel('bookingComp')
-console.log('page',bookingComp.value)
+
+console.log('page',nextPage.value)
+
 import axios from "axios";
 
 async function authenticate() {
@@ -50,6 +51,7 @@ async function authenticate() {
 
         console.log(user)
         if(user) {
+            console.log(nextPage.value, 'nextPage')
             foundUser.value = user
             loggedIn.value = true;
             activeComp.value = nextPage.value
@@ -64,7 +66,7 @@ async function authenticate() {
 
 <template>
 
-    <div class="w-screen h-screen bg-green-100 flex items-center justify-center">
+    <div class="w-screen h-screen  flex items-center justify-center">
        <div class="bg-white p-5 rounded-md shadow-md flex items-center justify-center flex-col w-1/3">
        <form class="flex flex-col w-full">
         <div class="flex items-center justify-center flex-col">
