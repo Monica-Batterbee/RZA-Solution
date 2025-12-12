@@ -14,7 +14,6 @@ const nextPage = defineModel('nextPage')
 const activeComp = defineModel('activeComp')
 const selectedDates = defineModel('selectedDates')
 const ticketsSelected = ref(false)
-const nextComp = ref('Tickets')
 
 const totalPrice = computed(() =>
   Object.values(tickets.value)
