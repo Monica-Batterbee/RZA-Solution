@@ -49,18 +49,9 @@ const mobileOpen = ref(false);
   </div>
 
   <nav
-    class="hidden md:flex text-white text-lg items-center ">
-
-      <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Home'">Home</a>
-      <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Hotel'">Our Hotel</a>
-      <a class="mx-2 cursor-pointer hover:text-green-300" v-if="loggedIn" @click="activeComp='ManageBookings'">Manage Bookings</a>
-      <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Booking'">Book Now</a>
-
-      <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp='EducationalVisits'">Educational visits</a>
-      </nav>
-
-    <nav class="text-white text-lg">
-
+    class="hidden md:flex text-white text-lg items-center">
+    <a class="mx-2 cursor-pointer hover:text-green-300" v-if="loggedIn" @click="activeComp='ManageBookings'">Manage Bookings</a>
+    <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp = 'Booking'">Book Now</a>
     <a
       v-if="!loggedIn"
       class="mx-2 cursor-pointer hover:text-green-300"
@@ -157,8 +148,8 @@ const mobileOpen = ref(false);
 
       <EducationalVisits v-if="activeComp==='EducationalVisits'" />
 
-      <ContactUs v-if="activeComp==='ContactUs'" 
-      v-model="activeComp"/>
+      <ManageBookings v-if="activeComp==='ManageBookings'"
+      v-model:foundUser="foundUser"/>
 
   </div>
 
