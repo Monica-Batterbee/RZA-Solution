@@ -42,7 +42,6 @@ const mobileOpen = ref(false);
 <template>
   <div class="flex h-full w-full flex-col">
   <header
-  v-if="activeComp !== 'SignUp'"
   class="shadow-md bg-[#A89C87] w-full p-1 flex flex-row justify-between items-center">
   <div class="flex items-center">
     <logo class="w-18 h-18 mr-4 rounded-xl" />
@@ -64,7 +63,6 @@ const mobileOpen = ref(false);
       @click="foundUser = {}; loggedIn = false"
     >Log out</a>
 
-    <a class="mx-2 cursor-pointer hover:text-green-300" @click="activeComp='EducationalVisits'">Educational visits</a>
     <a class="mx-2 cursor-pointer hover:text-green-300"  @click="activeComp='ContactUs'">Contact us</a>
   </nav>
 
@@ -80,8 +78,10 @@ const mobileOpen = ref(false);
 
   <div
     v-if="mobileOpen"
-    class="md:hidden bg-[#A89C87] text-white flex flex-col p-4 space-y-3"
-  >
+    class="md:hidden bg-[#A89C87] text-white flex flex-col p-4 space-y-3">
+    <a class="cursor-pointer hover:text-green-300" @click="activeComp = 'Home'">Home</a>
+    <a class="cursor-pointer hover:text-green-300" @click="activeComp = 'Hotel'">Our Hotel</a>
+    <a class="cursor-pointer hover:text-green-300" v-if="loggedIn" @click="activeComp='ManageBookings'">Manage Bookings</a>
     <a class="cursor-pointer hover:text-green-300" @click="activeComp = 'Booking'; mobileOpen = false">Book Now</a>
 
     <a
@@ -100,7 +100,7 @@ const mobileOpen = ref(false);
     <a class="cursor-pointer hover:text-green-300" @click="activeComp='ContactUs'">Contact us</a>
   </div>
 
-      <SignUp v-if="activeComp==='SignUp'"
+      <SignUp v-if="activeComp==='SignUp'" 
       v-model:loggedIn="loggedIn"
       v-model:activeComp="activeComp"
       v-model:foundUser="foundUser"

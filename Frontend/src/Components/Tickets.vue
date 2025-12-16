@@ -30,7 +30,7 @@ const bookingComp = defineModel('bookingComp')
       </div>
     </div>
     
-    <button v-if="totalPrice !== 0"
+    <button v-if="totalPrice > 0 "
      class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer" @click="bookingComp='Basket', ticketsSelected=true">Proceed to checkout</button>
 
   </div>

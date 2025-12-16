@@ -15,7 +15,7 @@ const activeComp = defineModel('activeComp')
 const nextPage = defineModel('nextPage')
 const foundUser = defineModel('foundUser')
 
-
+const postSuccesful = ref(null)
 const cost = totalPrice.value * selectedDates.value.length
 const checkout = ref(false)
 
@@ -28,14 +28,21 @@ function changePage() {
         const newBooking = {
             dateBookingMade :  now.toString(),
             bookingDetails: JSON.stringify({
-                 dates: selectedDates.value,
+                dates: selectedDates.value,
                 cost: cost,
                 ticketData: tickets.value,
             }),
             UserID : foundUser.value.userID
         }
-
-        postBooking(newBooking)
+        try{
+            postBooking(newBooking)
+        }
+        catch{
+            postSuccesful.value = false;
+            return
+        }
+        postSuccesful.value = true
+        
     }
     else {
         checkout.value = true
@@ -80,6 +87,8 @@ function changePage() {
         <p >(Total Cost - £{{ cost }})</p>
         <button class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer" @click="changePage">Check out</button>
       </div>
+      <p v-if="postSuccesful" class="text-center text-green-400 font-bold">Booking Made</p>
+      <p v-if="postSuccesful === false" class="text-center text-red-400 font-bold">Booking Unsucessful</p>
     </div>
     <div class="flex justify-center items-center cursor-pointer mt-3 text-white" @click="bookingComp='Tickets'">
         <i class="fa-solid fa-arrow-left mr-2"></i>
