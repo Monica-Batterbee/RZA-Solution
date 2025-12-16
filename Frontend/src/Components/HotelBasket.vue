@@ -15,6 +15,7 @@
     const checkout = ref(false);
     nextPage.value='Hotel'
     const totalCost = cost.value * selectedDates.value.length;
+    const postSuccesful = ref(null)
 
     function changePage() {
     if (loggedIn.value) {
@@ -31,7 +32,14 @@
         UserID: foundUser.value.userID
         };
 
-        postHotelBooking(newBooking)
+        try{
+            postHotelBooking(newBooking)
+        }
+        catch{
+            postSuccesful.value = false;
+            return
+        }
+        postSuccesful.value = true
     }
     else {
         checkout.value = true
@@ -69,6 +77,8 @@
         <p >(Total Cost - £{{totalCost }})</p>
         <button class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer" @click="changePage()">Check out</button>
       </div>
+      <p v-if="postSuccesful" class="text-center text-green-400 font-bold">Booking Made</p>
+      <p v-if="postSuccesful === false" class="text-center text-red-400 font-bold">Booking Unsucessful</p>
     </div>
     <div class="flex justify-center items-center cursor-pointer mt-3 text-white" @click="currentComp='Rooms'">
         <i class="fa-solid fa-arrow-left mr-2"></i>

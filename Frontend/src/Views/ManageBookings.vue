@@ -29,7 +29,7 @@ async function fetchBookings() {
         bookingDetails: JSON.parse(b.bookingDetails)
     }))  
 
-    console.log(hotelBookings.value)
+    console.log('h',hotelBookings.value)
 }
 
 function formatDate(ts) {
@@ -111,7 +111,7 @@ fetchBookings();
 
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div 
+    <div v-if="hotelBookings.length!=0"
         v-for="booking in hotelBookings" 
         :key="booking.bookingID"
         class="bg-white p-6 rounded-xl shadow-md text-black flex flex-col justify-between transition hover:shadow-xl"
@@ -133,12 +133,14 @@ fetchBookings();
             <p>(Cost - £{{ booking.bookingDetails.cost }})</p>
             <button 
                 class="px-4 py-2 cursor-pointer bg-[#A89C87] text-white rounded-lg shadow hover:bg-green-700 transition *: font-medium"
-                @click="deleteBooking(booking.bookingID)"
+                @click="deleteHotelBooking(booking.hotelBookingID)"
             >
                 Cancel Booking
             </button>
         </div>
     </div>
+
+    <p v-else >You have not made any bookings</p>
 
 </div>
 </div>

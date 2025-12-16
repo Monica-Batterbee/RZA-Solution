@@ -27,6 +27,7 @@ export const postHotelBooking = async (newBooking) => {
 
 export const deleteHotelBooking = async (bookingID) => {
   try {
+    console.log('bookingID',bookingID)
     const response = await axios.delete(`${API_URL}/${bookingID}`);
     return response.data;
   } catch (error) {

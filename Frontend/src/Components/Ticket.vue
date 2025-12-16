@@ -37,10 +37,10 @@ watch(localQuantity, (newVal) => {
       <label>Quantity:</label>
       <input
         type="number"
-        placeholder="0"
         min="0"
         class="bg-gray-200 p-1 rounded"
-        v-model="localQuantity"
+        v-model.number="localQuantity"
+        @input="localQuantity = Math.max(0, localQuantity || 0)"
       />
     </div>
 
