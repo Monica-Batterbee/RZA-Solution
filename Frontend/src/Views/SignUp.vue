@@ -2,33 +2,34 @@
 import { ref, computed } from 'vue'
 import axios from "axios";
 
+//Sets ref values
 const option = ref("Log in")
 const email = ref("")
 const password = ref("")
 const confirmation = ref("")
 const fName = ref('')
 const LName = ref('')
+const errors = ref({})
 
+//This retrieves the necesssary information from app.vue
 const loggedIn = defineModel('loggedIn');
 const activeComp = defineModel('activeComp');
 const foundUser = defineModel('foundUser')
 const nextPage = defineModel('nextPage')
 
-/* ---------------- VALIDATION ---------------- */
 
-const errors = ref({})
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const isFormValid = computed(() => {
   errors.value = {}
-
+    //Validates emails
   if (!email.value) {
     errors.value.email = 'Email is required'
   } else if (!emailRegex.test(email.value)) {
     errors.value.email = 'Invalid email format'
   }
-
+  //Validates password
   if (!password.value) {
     errors.value.password = 'Password is required'
   } else if (password.value.length < 6) {
@@ -36,9 +37,11 @@ const isFormValid = computed(() => {
   }
 
   if (option.value === 'Sign up') {
+    //Validates name
     if (!fName.value) errors.value.fName = 'First name is required'
     if (!LName.value) errors.value.LName = 'Surname is required'
 
+    //Validates password confirmation
     if (!confirmation.value) {
       errors.value.confirmation = 'Please confirm password'
     } else if (confirmation.value !== password.value) {
@@ -49,8 +52,7 @@ const isFormValid = computed(() => {
   return Object.keys(errors.value).length === 0
 })
 
-/* ---------------- AUTH ---------------- */
-
+//Authenticates user
 async function authenticate() {
   if (!isFormValid.value) return;
 
@@ -62,17 +64,19 @@ async function authenticate() {
         Email: email.value,
         Password: password.value
       }
-
+      //Posts new user to database
       await axios.post('http://localhost:5085/api/users', newUser)
 
       loggedIn.value = true;
       activeComp.value = nextPage.value
     } else {
+        //Retrieves current users
       const response = await axios.get('http://localhost:5085/api/users');
       const user = response.data.find(
         u => u.email === email.value && u.password === password.value
       );
 
+      //Checks if user is fetched
       if (!user) {
         errors.value.general = 'Invalid email or password'
         return
