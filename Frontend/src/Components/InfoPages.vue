@@ -3,7 +3,7 @@ import LionImage from '@/Assets/LionImage.vue';
 import GiraffeImage from '@/Assets/GiraffeImage.vue';
 import ZooKeeperImage from '@/Assets/ZooKeeperImage.vue';
 import RhinosImage from '@/Assets/RhinosImage.vue';
-
+//Showcases the information pages as buttons (imported into home page)
 const activeComp = defineModel('activeComp');
 </script>
 

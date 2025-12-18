@@ -14,13 +14,14 @@ public class RoomsController : ControllerBase
         _context = context;
     }
 
+    //Gets all rooms 
     [HttpGet]
     public async Task<IActionResult> GetRooms()
     {
         var rooms = await _context.HotelRoom.ToListAsync();
         return Ok(rooms);
     }
-
+    //Adds a new room
     [HttpPost]
     public async Task<IActionResult> AddRoom([FromBody] HotelRoom room)
     {

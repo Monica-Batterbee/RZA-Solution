@@ -1,6 +1,8 @@
 <script setup>
     import { getRooms } from '@/Services/RoomService';
     import { ref, onMounted } from 'vue';
+
+    //Page to showcase hotel rooms
     
     // Props
     const props = defineProps({
@@ -21,6 +23,7 @@
     
     const rooms = ref([]);
     
+    //Fetches all current rooms
     async function fetchRooms() {
       const res = await getRooms();
       rooms.value = res;

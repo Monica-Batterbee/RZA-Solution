@@ -3,7 +3,7 @@ import {ref} from 'vue'
 import { getUsers } from '@/Services/UserService';
 import SignUp from '@/Views/SignUp.vue';
 
-
+//Modal to allow users to register for an event (Currently not functional)
 const activeComp = defineModel('activeComp')
 const openModal = defineModel("openModal")
 

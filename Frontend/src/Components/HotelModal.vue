@@ -12,17 +12,19 @@ const checkout = defineModel('checkout')
 
 const nextPage = defineModel('nextPage');
 
+//Searches to find the user in the database
 async function searchUser() {
         const allUsers = await getUsers();
         const user = allUsers.find((u) => u.email === userEmail.value)
-    
+
+        //If the user is found, theyre navigated back to basket to checkout
         if (user) {
             foundUser.value=user;
             loggedIn.value=true;
             checkout.value=false
             currentComp.value = 'HotelBasket'
         }
-    
+        //If the user is not found, theyre navigated to sign up to enter the information needed for the booking
         else {
             nextPage.value = 'Hotel'
             goToSignUp.value = true;

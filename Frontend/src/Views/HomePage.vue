@@ -5,12 +5,16 @@ import HotelImage from '@/Assets/HotelImage.vue';
 import InfoPages from '@/Components/InfoPages.vue';
 
 const model = defineModel();
+//Home page
 
+
+//Array of image sources
 const imageLibrary = ["https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85",
 'https://wallpapers.com/images/hd/zoo-animals-pictures-p2xol45muslpeops.jpg']
 
 let i = ref(0);
 
+//Allows user to flick through image library
 function changeImg(operation) {
   if (operation === 'plus') {
     if (i.value === imageLibrary.length-1) {
@@ -54,6 +58,7 @@ function changeImg(operation) {
             <b class="text-xl text-white" >></b>
         </button>
       </div>
+      <!--Shows info pages-->
       <InfoPages  class="p-3 mt-8"
       v-model:activeComp="model"/>
       <SiteMap class="w-6xl" />

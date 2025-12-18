@@ -1,6 +1,7 @@
 <script setup>
 import Ticket from './Ticket.vue';
 
+//Showcases tickets for users to select
 const tickets = defineModel('tickets');
 const totalPrice = defineModel('totalPrice');
 const ticketsSelected = defineModel('ticketsSelected');

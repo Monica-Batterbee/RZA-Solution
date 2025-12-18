@@ -13,12 +13,12 @@
     const userEmail = ref('');
     const goToSignUp = ref(false);
     
-    console.log("Runnings")
-    
+    //Searches for the user in the database
     async function searchUser() {
         const allUsers = await getUsers();
         const user = allUsers.find((u) => u.email === userEmail.value)
     
+        //If the user has been found, they will be navigated back to the basket to checkout
         if (user) {
             foundUser.value=user;
             loggedIn.value=true;
@@ -26,6 +26,7 @@
             bookingComp.value = 'Basket'
         }
     
+        //If the user has not been found, they will be navigated to sign up to enter their details for the booking
         else {
             nextPage.value = 'Booking'
             goToSignUp.value = true;

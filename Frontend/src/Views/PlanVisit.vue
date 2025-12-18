@@ -1,8 +1,8 @@
 <script setup>
 import UpcomingEvents from './UpcomingEvents.vue';
-
+    //Page showing daily schedule of the zoo
     const activeComp = defineModel();
-
+    //Object storing the daily schedule
     const dailySchedule = {
     morning: [
         {

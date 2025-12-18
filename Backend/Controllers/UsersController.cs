@@ -13,7 +13,7 @@ public class UsersController : ControllerBase
     {
         _context = context;
     }
-
+    //Gets all users
     [HttpGet]
     public async Task<IActionResult> GetUsers()
     {
@@ -21,6 +21,7 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
+    //Adds a new user
     [HttpPost]
     public async Task<IActionResult> AddUser([FromBody] User user)
     {

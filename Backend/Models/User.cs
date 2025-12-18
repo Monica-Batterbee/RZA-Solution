@@ -1,5 +1,6 @@
 namespace Backend.Models
 {
+    //Model of user table (Storing columns and datatypes)
     public class User
     {
         public int UserID { get; set; }

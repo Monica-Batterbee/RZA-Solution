@@ -3,6 +3,8 @@
     import Calander from '@/Components/Calander.vue';
     import HotelBasket from '@/Components/HotelBasket.vue';
 
+    //Shows components to allow user to book hotel
+
     const loggedIn = defineModel('loggedIn')
     const activeComp = defineModel('activeComp')
     const foundUser= defineModel('foundUser')
@@ -15,6 +17,7 @@
 </script>
 
 <template>
+    <!-- Showcases rooms before dates have been selected -->
     <Rooms v-if="currentComp==='Rooms' && selectedDates.length===0"
     :msg="'Stay in one of our adventurous rooms!'"
     :allowSelect="false"
@@ -22,6 +25,7 @@
     v-model:selectedRooms="selectedRooms"
     v-model:cost="cost"/>
 
+    <!-- Showcases rooms after dates have been selected -->
     <Rooms v-if="currentComp==='Rooms' && selectedDates.length>0"
     :msg="'Select the rooms you would like to book'"
     :allowSelect="true"
@@ -29,12 +33,13 @@
     v-model:selectedRooms="selectedRooms"
     v-model:cost="cost"/>
 
+    <!--Allows user to select the dates for their stay-->
     <Calander v-if="currentComp==='Calendar'" 
     v-model:selectedDates="selectedDates"
     v-model:nextPage="nextComp"
     v-model="currentComp"/>
 
-
+    <!--Basket showing selected dates, rooms and total cost-->
     <HotelBasket  v-if="currentComp==='HotelBasket'"
         v-model:selectedDates="selectedDates"
         v-model:currentComp="currentComp"

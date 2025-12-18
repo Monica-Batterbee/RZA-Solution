@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
+//Calendar view for users to select dates
+
 const selectedDates = defineModel('selectedDates');
 const nextPage = defineModel('nextPage');
 const bookingComp = defineModel()

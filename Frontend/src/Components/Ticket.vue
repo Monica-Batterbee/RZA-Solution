@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 
+//Individual component showcasing each ticket (imported throughout system)
 const ticketsSelected = defineModel();
 
 // Props

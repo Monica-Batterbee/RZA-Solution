@@ -3,6 +3,8 @@
     import { postHotelBooking } from '@/Services/HotelBookingService';
     import {ref, toRaw} from 'vue'
 
+    //Basket showing the selected dates and hotel rooms
+
     const selectedDates = defineModel('selectedDates');
     const currentComp = defineModel('currentComp');
     const cost = defineModel('cost');
@@ -17,7 +19,9 @@
     const totalCost = cost.value * selectedDates.value.length;
     const postSuccesful = ref(null)
 
+    //Decides what page users will be navigated to once they've pressed check out
     function changePage() {
+    //If their logged in, the booking will be posted to the database
     if (loggedIn.value) {
         const now = new Date();
         const date = now.toString()
@@ -41,6 +45,7 @@
         }
         postSuccesful.value = true
     }
+    //If theyre not logged in, the hotel modal will be opened
     else {
         checkout.value = true
     }

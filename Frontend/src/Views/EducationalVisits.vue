@@ -1,5 +1,5 @@
 <script setup>
-
+//Information page about educational visit
 </script>
 
 <template>

@@ -5,6 +5,8 @@ import {ref} from 'vue';
 import BookingModal from './BookingModal.vue';
 import { postBooking } from '@/Services/BookingService';
 
+//Basket for zoo tickets
+
 const tickets = defineModel('tickets');
 const totalPrice = defineModel('totalPrice');
 const selectedDates = defineModel('selectedDates');
@@ -19,11 +21,11 @@ const postSuccesful = ref(null)
 const cost = totalPrice.value * selectedDates.value.length
 const checkout = ref(false)
 
-
+//Decides what page a user sees once the click checkout
 function changePage() {
+    //If user is logged in, the booking is posted to the database
     if (loggedIn.value) {
         const now = new Date();
-        console.log(now.toString())
         
         const newBooking = {
             dateBookingMade :  now.toString(),
@@ -44,6 +46,7 @@ function changePage() {
         postSuccesful.value = true
         
     }
+    //If the user is not logged in, the booking modal is opened
     else {
         checkout.value = true
     }

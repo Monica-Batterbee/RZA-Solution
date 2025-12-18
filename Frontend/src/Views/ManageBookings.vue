@@ -3,11 +3,14 @@ import {ref} from 'vue'
 import { getBookings, deleteBooking } from '@/Services/BookingService';
 import Ticket from '@/Components/Ticket.vue';
 
+//Page to show the user what booking they have made
+
 const user = defineModel('foundUser')
 const bookingIDs = ref([])
 const ticketsSelected = ref(true);
 const userBookings = ref([])
 
+//Retrieves all bookings made by the current user
 async function fetchBookings() {
     const bookings = await getBookings();
     userBookings.value = bookings
@@ -19,6 +22,7 @@ async function fetchBookings() {
     console.log(userBookings.value)
 }
 
+//Puts the date into a nicer, more readable format
 function formatDate(ts) {
   const d = new Date(ts);
   const day = String(d.getDate()).padStart(2, '0');

@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Models
 {
+    //Model of Contact Form table (Storing columns and datatypes)
     public class ContactForm
     {
         [Key]

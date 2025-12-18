@@ -1,7 +1,9 @@
 <script setup>
 
 const activeComp = defineModel();
+//Information page about our animals
 
+//Stores information about each animal
 const animals = {
   lion: {
     name: "African Lion",

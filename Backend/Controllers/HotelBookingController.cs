@@ -14,6 +14,7 @@ public class HotelBookingsController : ControllerBase
         _context = context;
     }
 
+    //Gets all hotel bookings
     [HttpGet]
     public async Task<IActionResult> GetHotelBookings()
     {
@@ -21,6 +22,7 @@ public class HotelBookingsController : ControllerBase
         return Ok(bookings);
     }
 
+    //Adds a new hotel booking
     [HttpPost]
     public async Task<IActionResult> AddHotelBooking([FromBody] HotelBooking booking)
     {
@@ -29,6 +31,7 @@ public class HotelBookingsController : ControllerBase
         return CreatedAtAction(nameof(GetHotelBookings), new { id = booking.HotelBookingID }, booking);
     }
 
+    //Deletes the hotel booking with the id in the parameter
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBooking(int id)
     {

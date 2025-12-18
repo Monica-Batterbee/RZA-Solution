@@ -2,11 +2,13 @@
     import Modal from '@/Components/Modal.vue';
     import {ref} from 'vue'
 
+    //Page showing upcoming events
+
     const activeComp = defineModel();
     const openModal = ref(false);
     const checkout = false;
 
-
+//Object storing information about upcoming events
 const upcomingEvents = {
   wildlifeWonderDay: {
     title: "Wildlife Wonder Day",

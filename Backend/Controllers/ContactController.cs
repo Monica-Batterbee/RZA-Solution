@@ -14,6 +14,7 @@ public class ContactController : ControllerBase
         _context = context;
     }
 
+    //Gets all contacts
     [HttpGet]
     public async Task<IActionResult> GetContacts()
     {
@@ -21,6 +22,7 @@ public class ContactController : ControllerBase
         return Ok(contacts);
     }
 
+    //Adds a new contact
     [HttpPost]
     public async Task<IActionResult> AddContactForm([FromBody] ContactForm contactForm)
     {

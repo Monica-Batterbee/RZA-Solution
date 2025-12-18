@@ -1,6 +1,7 @@
 <script setup>
     const activeComp = defineModel();
 
+    //Object storing information about each zoo zeeper
     const zooKeepers = {
     keeper1: {
         name: "Emily Hart",
@@ -72,10 +73,6 @@
                 <h2 class="text-2xl mb-4">{{ keeper.name }}</h2>
                 <img :src='keeper.image' class="w-80 h-80 rounded-md mb-4"/>
                 <p>{{ keeper.bio }}</p>
-                <!-- <div class="flex flex-col w-full items-start justify-start mt-4">
-                    <p><b>Species</b> - {{ animal.species }}</p>
-                    <p><b>Habitat</b> - {{ animal.habitat }}</p>
-                </div> -->
                 </div>
             </div>
         </div>

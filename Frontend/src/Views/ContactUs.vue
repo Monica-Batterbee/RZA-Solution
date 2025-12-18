@@ -2,6 +2,8 @@
     import {ref} from 'vue'
     import { postContact } from '@/Services/ContactService'
 
+    //Page for users to fill out contact form
+
     const model = defineModel();
 
     const submitClicked = ref(false)
@@ -9,6 +11,7 @@
     const phone = ref('')
     const message = ref('')
     
+    //Posts contact information to contact table in database
     function submitForm() {
         submitClicked.value = true;
 

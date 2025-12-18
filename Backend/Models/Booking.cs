@@ -1,5 +1,6 @@
 namespace Backend.Models
 {
+    //Model of booking table (Storing columns and datatypes)
     public class Booking
     {
         public int BookingID { get; set; }

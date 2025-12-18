@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Models
 {
+    //Model of hotel room table (Storing columns and datatypes)
     public class HotelRoom
     {
         [Key]

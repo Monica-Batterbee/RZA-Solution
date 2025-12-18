@@ -4,7 +4,7 @@ import Calander from '@/Components/Calander.vue'
 import Tickets from '@/Components/Tickets.vue'
 import Basket from '@/Components/Basket.vue'
 
-
+//Flicks between components, allowing the user to make a booking
 
 const bookingComp = defineModel('bookingComp')
 const loggedIn = defineModel('loggedIn')
@@ -22,23 +22,27 @@ const totalPrice = computed(() =>
 </script>
 
 <template>
+    <!-- Button to return to home page -->
     <div class="flex items-start">
         <button class="text-left text-white p-3 bg-[#A89C87] rounded-md m-3 cursor-pointer"
         @click="activeComp='Home'">Go Back to Home</button>
     </div>
 
+    <!-- Starts with calendar view to allow the user to select a date -->
     <Calander v-if="bookingComp==='Calendar'"
     v-model:selectedDates="selectedDates"
     v-model:nextPage="nextComp"
     v-model="bookingComp"
     />
 
+    <!-- Component to show available tickets -->
     <Tickets v-if="bookingComp==='Tickets'" 
     v-model:tickets="tickets"
     v-model:totalPrice="totalPrice"
     v-model:ticketsSelected="ticketsSelected"
     v-model:bookingComp="bookingComp"/>
 
+    <!-- Basket showing tickets and selected dates -->
     <Basket v-if="bookingComp==='Basket'"
     v-model:tickets="tickets"
     v-model:totalPrice="totalPrice"

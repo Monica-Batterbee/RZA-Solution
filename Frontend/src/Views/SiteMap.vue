@@ -1,5 +1,6 @@
 <script setup>
 import SiteMap from '@/Assets/SiteMap.vue';
+//Reusable site map
 </script>
 
 <template>
